@@ -1,0 +1,9 @@
+{% if commitments %}
+    <ul>
+    {% for commitment in commitments %}
+        <li><a href="{% url 'commitment_details' commitment.id %}"></a>{{ commitment }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No commitments are available.</p>
+{% endif %}

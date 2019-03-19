@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+# from datetime import datetime
 
 
 class Doctor(models.Model):
@@ -32,3 +33,9 @@ class Commitment(models.Model):
     location = models.CharField(max_length=50)
     availability_date = models.DateTimeField(default=None)
     created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        availability_date = str(self.availability_date)
+        date_available = availability_date[:-15]
+        time_available = availability_date[-14:-9]
+        return self.doctor + ' - available on ' + date_available + ' for ' + str(self.hours) + ' hours, starting at ' + time_available + '.'
