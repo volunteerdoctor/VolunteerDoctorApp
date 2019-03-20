@@ -1,0 +1,14 @@
+{% extends 'boilerplate.html' %}
+{% block title %}Sign in as a Medic{% endblock %}
+{% block content %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'register_medic' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="username" id="username" default-value="">
+    <input type="password" name="password" id="password" default-value="">
+    <input type="submit" value="Login">
+</form>
+
+{% endblock %}

@@ -1,7 +1,7 @@
 {% if commitments %}
     <ul>
     {% for commitment in commitments %}
-        <li><a href="{% url 'commitment_details' commitment.id %}"></a>{{ commitment }}</a></li>
+        <li><a href="{% url 'commitment_details' commitment.id %}"></a></li>
     {% endfor %}
     </ul>
 {% else %}

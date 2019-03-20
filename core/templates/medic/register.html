@@ -1,0 +1,21 @@
+{% extends 'boilerplate.html' %}
+{% block title %}Sign up as a Medic{% endblock %}
+{% block content %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'register_medic' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="first_name" id="first_name" default-value="">
+    <input type="text" name="last_name" id="last_name" default-value="">
+    <input type="text" name="username" id="username" default-value="">
+    <input type="text" name="health_facility" id="health_facility" default-value="">
+    <input type="text" name="specialty" id="specialty" default-value="">
+    <input type="text" name="contact" id="contact" default-value="">
+    <input type="email" name="email" id="email" default-value="">
+    <input type="password" name="password" id="password" default-value="">
+    <input type="password" name="confirm_password" id="confirm_password" default-value="">
+    <input type="submit" value="Sign Up">
+</form>
+
+{% endblock %}

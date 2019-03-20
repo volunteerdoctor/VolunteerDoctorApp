@@ -1,0 +1,9 @@
+{% if medics %}
+    <ul>
+    {% for medic in medics %}
+        <li><a href="{% url 'medic_details' medic.id %}"></a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No medics are available.</p>
+{% endif %}
