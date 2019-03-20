@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
 
-from .models import Medic, Commitment
+from .models import Medic, Commitment, Request, Facility
 
 
 def index(request):
@@ -55,3 +55,21 @@ def register_commitment(request, medic_id):
     # with POST data. This prevents data from being posted twice if a
     # user hits the Back button.
     return HttpResponseRedirect(reverse('commitment_details', args=(commitment.id,)))
+
+
+class RequestIndexView(generic.ListView):
+    template_name = 'request/index.html'
+    context_object_name = 'requests'
+
+    def get_queryset(self):
+        """Return requests."""
+        return Request.objects.order_by('-created_at')
+
+
+class FacilityIndexView(generic.ListView):
+    template_name = 'facility/index.html'
+    context_object_name = 'requests'
+
+    def get_queryset(self):
+        """Return facilities."""
+        return Facility.objects.order_by('name')

@@ -23,4 +23,8 @@ urlpatterns = [
     # ex: /core/5/commitments/
     path('<int:medic_id>/commitments/',
          views.medic_commitments, name='medic_commitments'),
+    # ex: /core/requests/
+    path('requests/', views.RequestIndexView.as_view(), name='requests'),
+    # ex: /core/facilities/
+    path('facilities/', views.FacilityIndexView.as_view(), name='facilities'),
 ]

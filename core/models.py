@@ -26,19 +26,6 @@ class Facility(models.Model):
         return self.name
 
 
-class Commitment(models.Model):
-    medic = models.ForeignKey(Medic, on_delete=models.CASCADE)
-    hours = models.IntegerField(default=0)
-    facility = models.ForeignKey(Facility, on_delete=models.CASCADE)
-    availability_date = models.DateTimeField(default=None)
-    created_at = models.DateTimeField(default=timezone.now)
-
-    def __str__(self):
-        availability_date = str(self.availability_date)
-        date_available = availability_date[:-15]
-        time_available = availability_date[-14:-9]
-        return self.medic.__str__() + ' - available on ' + date_available + ' for ' + str(self.hours) + ' hours, starting at ' + time_available + '.'
-
 class Request(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=250)
@@ -48,3 +35,18 @@ class Request(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Commitment(models.Model):
+    medic = models.ForeignKey(Medic, on_delete=models.CASCADE)
+    hours = models.IntegerField(default=0)
+    facility = models.ForeignKey(Facility, on_delete=models.CASCADE)
+    request = models.ForeignKey(Request, on_delete=models.CASCADE)
+    availability_date = models.DateTimeField(default=None)
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        availability_date = str(self.availability_date)
+        date_available = availability_date[:-15]
+        time_available = availability_date[-14:-9]
+        return self.medic.__str__() + ' - available on ' + date_available + ' for ' + str(self.hours) + ' hours, starting at ' + time_available + '.'
