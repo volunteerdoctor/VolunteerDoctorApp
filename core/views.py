@@ -21,7 +21,7 @@ class CommitmentIndexView(generic.ListView):
 
 class CommitmentDetailView(generic.DetailView):
     model = Commitment
-    template_name = 'commitment/detail.html'
+    template_name = 'commitment/details.html'
 
 
 def medic_commitments(request, medic_id):
@@ -41,7 +41,7 @@ class MedicIndexView(generic.ListView):
 
 class MedicDetailView(generic.DetailView):
     model = Medic
-    template_name = 'medic/detail.html'
+    template_name = 'medic/details.html'
 
 
 def register_medic(request):
@@ -66,6 +66,11 @@ class RequestIndexView(generic.ListView):
         return Request.objects.order_by('-created_at')
 
 
+class RequestDetailView(generic.DetailView):
+    model = Request
+    template_name = 'request/details.html'
+
+
 class FacilityIndexView(generic.ListView):
     template_name = 'facility/index.html'
     context_object_name = 'requests'
@@ -73,3 +78,8 @@ class FacilityIndexView(generic.ListView):
     def get_queryset(self):
         """Return facilities."""
         return Facility.objects.order_by('name')
+
+
+class FacilityDetailView(generic.DetailView):
+    model = Facility
+    template_name = 'facility/details.html'

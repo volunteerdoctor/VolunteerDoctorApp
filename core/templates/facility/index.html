@@ -1,0 +1,13 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}">
+
+{% if facilities %}
+    <ul>
+    {% for facility in facilities %}
+        <li><a href="{% url 'facility_details' facility.id %}"></a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No facilities are available.</p>
+{% endif %}

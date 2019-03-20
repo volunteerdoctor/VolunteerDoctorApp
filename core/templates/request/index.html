@@ -1,0 +1,13 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}">
+
+{% if requests %}
+    <ul>
+    {% for request in requests %}
+        <li><a href="{% url 'request_details' request.id %}"></a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No requests are available.</p>
+{% endif %}

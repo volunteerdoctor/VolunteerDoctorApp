@@ -1,3 +1,7 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}">
+
 {% if commitments %}
     <ul>
     {% for commitment in commitments %}
